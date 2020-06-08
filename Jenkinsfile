@@ -13,7 +13,7 @@ pipeline{
     
     stage('Build Image'){
       steps{ 
-          def customImage = docker.build("http-server-test")
+          echo "sdfsD"
         }
       }
     }
