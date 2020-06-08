@@ -12,9 +12,8 @@ pipeline{
     }
     
     stage('Build Image'){
-      steps{
-        script{ 
-          def customImage = docker.build("my-image:${env.BUILD_ID}")
+      steps{ 
+          def customImage = docker.build("http-server-test")
         }
       }
     }
