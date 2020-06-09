@@ -12,6 +12,18 @@ spec:
   selector:
     app: nginx
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ceph-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: rook-cephfs
+---
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
