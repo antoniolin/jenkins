@@ -1,33 +1,23 @@
-node {
-    def app
+pipeline {
 
-    stage('Clone repository') {
-        /* Cloning the Repository to our Workspace */
+  agent any
 
-        checkout scm
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git 'https://github.com/antoniolin/jenkins.git'
+      }
     }
 
-    stage('Build image') {
-        /* This builds the actual image */
-
-        app = docker.build("http-server/nodeapp")
-    }
-
-    stage('Test image') {
-        
-        app.inside {
-            echo "Tests passed"
+    stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "nginx-deployment.yaml", kubeconfigId: "mykubeconfig")
         }
+      }
     }
 
-    stage('Push image') {
-        /* 
-			You would need to first register with DockerHub before you can push images to your account
-		*/
-        docker.withRegistry('localhost:5000') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-            } 
-                echo "Trying to Push Docker Build to DockerHub"
-    }
+  }
+
 }
