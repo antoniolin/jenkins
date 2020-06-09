@@ -11,6 +11,7 @@ pipeline {
         git 'https://github.com/antoniolin/jenkins.git'
       }
     }
+    
     stage('Deploy App') {
       steps {
         script {
