@@ -8,7 +8,7 @@ spec:
   ports:
   - port: 80
     name: web
-  type: loadBalancer
+  type: LoadBalancer
   selector:
     app: nginx
 ---
