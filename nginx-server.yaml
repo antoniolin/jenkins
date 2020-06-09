@@ -33,7 +33,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: www
-          mountPath: /usr/share/nginx/html
+          mountPath: /usr/share/nginx//webstorage
       volumes:
       - name: www
         persistentVolumeClaim:
