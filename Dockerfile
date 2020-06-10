@@ -23,4 +23,6 @@ RUN /usr/local/bin/install-plugins.sh ssh-slaves && \
     /usr/local/bin/install-plugins.sh htmlpublisher && \
     /usr/local/bin/install-plugins.sh greenballs && \
     /usr/local/bin/install-plugins.sh kubernetes
+USER root
 RUN apt-get update
+USER jenkins
