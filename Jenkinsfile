@@ -1,8 +1,6 @@
 pipeline {
 
-  agent {
-    dockerfile true
-  }
+  agent any
 
   stages {
 
@@ -11,13 +9,7 @@ pipeline {
         git 'https://github.com/antoniolin/jenkins.git'
       }
     }
-    stage('Build Image') {
-      steps {
-        script {
-          echo 'hh'
-        }
-      }
-    }        
+   
     stage('Deploy App') {
       steps {
         script {
