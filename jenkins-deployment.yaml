@@ -13,18 +13,19 @@ spec:
         app: jenkins
     spec:
       terminationGracePeriodSeconds: 10
-      serviceAccount: jenkins
+      serviceAccountName: jenkins
       containers:
       - name: jenkins
-        image: jenkins/jenkins:lts
+        image: jequals5/jenkins-on-kubernetes:v1.0
         imagePullPolicy: IfNotPresent
+        env:
+         - name: JAVA_OPTS
+           value: -Djenkins.install.runSetupWizard=false
         ports:
         - containerPort: 8080
-          name: web
-          protocol: TCP
+          name: http-port
         - containerPort: 50000
-          name: agent
-          protocol: TCP
+          name: jnlp-port
         resources:
           limits:
             cpu: 1000m
@@ -72,8 +73,5 @@ spec:
   ports:
   - name: web
     port: 8080
-    targetPort: web
-    nodePort: 30002
-  - name: agent
-    port: 50000
-    targetPort: agent
+    targetPort: 8080
+    nodePort: 30001
