@@ -5,7 +5,9 @@ RUN /usr/local/bin/install-plugins.sh ssh-slaves && \
     /usr/local/bin/install-plugins.sh slack && \
     /usr/local/bin/install-plugins.sh htmlpublisher && \
     /usr/local/bin/install-plugins.sh greenballs && \
-    /usr/local/bin/install-plugins.sh kubernetes
+    /usr/local/bin/install-plugins.sh kubernetes && \
+    /usr/local/bin/install-plugins.sh kubernetes-cd && \ 
+    /usr/local/bin/install-plugins.sh blueocean
 USER root
 RUN apt-get update && \
     apt-get -y install apt-transport-https \
