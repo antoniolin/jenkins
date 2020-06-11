@@ -21,6 +21,9 @@ spec:
         env:
          - name: JAVA_OPTS
            value: -Djenkins.install.runSetupWizard=false
+        envFrom:
+         - configMapRef:
+           name: jenkins-config
         ports:
         - containerPort: 8080
           name: http-port
