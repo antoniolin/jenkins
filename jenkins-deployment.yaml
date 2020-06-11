@@ -51,12 +51,18 @@ spec:
         - name: jenkinshome
           subPath: jenkins
           mountPath: /var/jenkins_home
+        - name: docker-sock-volume
+          mountPath: /var/run/docker.sock
       securityContext:
         fsGroup: 1000
       volumes:
       - name: jenkinshome
         persistentVolumeClaim:
           claimName: cephfs-jenkins-block-pvc
+      - name: docker-sock-volume
+        hostPath:
+          path: /var/run/docker.sock
+          type: File
 
 ---
 apiVersion: v1
