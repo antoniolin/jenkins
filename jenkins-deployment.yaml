@@ -18,12 +18,9 @@ spec:
       - name: jenkins
         image: localhost:5000/antonio/jenkins-docker-v3
         imagePullPolicy: IfNotPresent
-        env:
-         - name: JAVA_OPTS
-           value: -Djenkins.install.runSetupWizard=false
-        envFrom:
-         - configMapRef:
-           name: jenkins-config
+#       env:
+#        - name: JAVA_OPTS
+#          value: -Djenkins.install.runSetupWizard=false
         ports:
         - containerPort: 8080
           name: http-port
