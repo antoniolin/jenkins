@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-config
+  namespace: jenkins
+data:
+  argumentsRealm.roles.user:admin
+  argumentsRealm.roles.admin:admin
+  argumentsRealm.passwd.admin:admin
